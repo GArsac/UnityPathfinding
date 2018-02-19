@@ -15,23 +15,31 @@ public class MouseController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        Debug.Log("Test -1");
         objectIsHit();
+        Debug.Log("Test -2");
     }
 
     public void objectIsHit()
     {
+        Debug.Log("Test");
         if (Input.GetMouseButtonDown(0))
         {
+            Debug.Log("Test2");
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+            Debug.Log("Test3");
             if (hit)
             {
+                Debug.Log("Test4");
                 if (hit.transform.tag == "Selectable")
                 {
+                    Debug.Log("Selectable");
                     Player.SelectedObject = hit.transform.gameObject;
                 }
                 else if (hit.transform.tag == "Node")
                 {
-                    PathfindingObject.GetComponent<Move>().Teleport(Player.SelectedObject, hit.transform.gameObject);
+                    Debug.Log("Node");
+                    PathfindingObject.GetComponent<Move>().BasicMove(Player.SelectedObject, hit.transform.gameObject);
                 }
             }
             else

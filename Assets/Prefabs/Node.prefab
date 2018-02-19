@@ -78,7 +78,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25c4774cc529c1b4abcb858b519e52c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AdjacentsNodes: []
+  AdjacentsNodes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   HeldObject: {fileID: 0}
 --- !u!212 &212878995926845888
 SpriteRenderer:

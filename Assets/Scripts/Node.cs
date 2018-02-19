@@ -4,9 +4,19 @@ using UnityEngine;
 
 public class Node : MonoBehaviour {
 
-    public GameObject [] AdjacentsNodes;
+    /** LISTE DES NODES ADJACENTES
+     * 
+     *  0 = Haut
+     *  1 = Droite
+     *  2 = Bas
+     *  3 = Gauche
+     * 
+     **/
+    public GameObject[] AdjacentsNodes;
 
     public GameObject HeldObject;
+
+    public static GameObject[] AllNodes;
 
     // Use this for initialization
     void Start()
@@ -26,8 +36,20 @@ public class Node : MonoBehaviour {
         {
             for (int j = -4; j < 5; j++)
             {
-                Instantiate(BaseNode, new Vector3(i, j, 0), Quaternion.identity);
+                GameObject CurrentNode = Instantiate(BaseNode, new Vector3(i, j, 0), Quaternion.identity);
+                CurrentNode.name = "Node(" + i + "," + j + ")";
             }
+        }
+    }
+
+    public static void LinkNodes()
+    {
+        foreach (GameObject node in AllNodes)
+        {
+            node.GetComponent<Node>().AdjacentsNodes[0] = GameObject.Find("Node(" + (node.transform.position.x) + "," + (node.transform.position.y + 1) + ")");
+            node.GetComponent<Node>().AdjacentsNodes[1] = GameObject.Find("Node(" + (node.transform.position.x + 1) + "," + (node.transform.position.y) + ")");
+            node.GetComponent<Node>().AdjacentsNodes[2] = GameObject.Find("Node(" + (node.transform.position.x) + "," + (node.transform.position.y - 1) + ")");
+            node.GetComponent<Node>().AdjacentsNodes[3] = GameObject.Find("Node(" + (node.transform.position.x - 1) + "," + (node.transform.position.y) + ")");
         }
     }
 }
