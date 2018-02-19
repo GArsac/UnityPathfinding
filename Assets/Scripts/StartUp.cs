@@ -12,6 +12,7 @@ public class StartUp : MonoBehaviour {
         Node.CreateNodes(BaseNode);
         Node.AllNodes = GameObject.FindGameObjectsWithTag("Node");
         Node.LinkNodes();
+        BaseObject.GetComponent<Move>().OnNode = Node.AllNodes[0];
         BaseObject.GetComponent<Move>().Teleport(BaseObject, Node.AllNodes[0]);
     }
 	

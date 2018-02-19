@@ -39,7 +39,7 @@ public class MouseController : MonoBehaviour {
                 else if (hit.transform.tag == "Node")
                 {
                     Debug.Log("Node");
-                    PathfindingObject.GetComponent<Move>().BasicMove(Player.SelectedObject, hit.transform.gameObject);
+                    StartCoroutine(PathfindingObject.GetComponent<Move>().BasicMove(Player.SelectedObject, hit.transform.gameObject));
                 }
             }
             else
